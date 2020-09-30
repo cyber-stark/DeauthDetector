@@ -11,7 +11,7 @@ extern "C" {
 }
 
 // ===== SETTINGS ===== //
-#define LED 2              /* LED pin (2=built-in LED) */
+#define LED 2              /* LED pin (2=built-in LED of ESP8266) */
 #define LED_INVERT true    /* Invert HIGH/LOW for LED */
 #define SERIAL_BAUD 115200 /* Baudrate for serial communication */
 #define CH_TIME 140        /* Scan time (in ms) per channel */
@@ -43,14 +43,15 @@ void sniffer(uint8_t *buf, uint16_t len) {
 }
 
 // ===== Attack detection functions ===== //
-void attack_started() {
-  digitalWrite(LED, !LED_INVERT); // turn LED on
-  Serial.println("ATTACK DETECTED");
+void attack_started() //added by ameen
+{
+  digitalWrite(LED,!LED_INVERT); // turn LED ON
+  Serial.println("ATTACK DETECTED:");
 }
 
 void attack_stopped() {
-  digitalWrite(LED, LED_INVERT); // turn LED off
-  Serial.println("ATTACK STOPPED");
+  digitalWrite(LED, LED_INVERT); // turn LED OFF
+  Serial.println("ATTACK STOPPED:");
 }
 
 // ===== Setup ===== //
